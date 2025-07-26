@@ -2,7 +2,7 @@
 Results Bot（複数DBテーブルへのCSVアップロード機能追加）
 
 ## ②課題内容（どんな作品か）
-- 業務データ集計アプリ（デプロイURLに対して）のツールバーのCSVアップロード機能を複数のDBテーブルに対応させました
+- 業務データ集計アプリ（デプロイURLに対して）のツールバーのCSVアップロード機能を複数のDBテーブルの選択に対応させました
 
 ## ③アプリのデプロイURL
 https://gs-y-imai.sakura.ne.jp/results_bot_4/sales_div/index.php#
