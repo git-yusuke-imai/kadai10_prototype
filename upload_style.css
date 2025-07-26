@@ -1,0 +1,196 @@
+/* ベース設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Meiryo', 'メイリオ', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main {
+    margin: 0;
+    padding: 0px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 0; */
+    /* padding-top: 0; */
+    /* overflow: hidden; 折りたたみ回避に有効 */
+}
+
+
+.upload-content h1 {
+    margin-top: 0;
+}
+
+header {
+    height: 100px;
+    background: rgb(170, 225, 245);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    margin-top: 50px;
+    height: calc(100vh - 100px);
+}
+
+aside {
+    width: 300px;
+    background: #f5f5f5;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+}
+
+aside h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside li {
+    margin-bottom: 10px;
+}
+
+aside a {
+    text-decoration: none;
+    background: transparent; /* ←追加 */
+    color: #333;
+    display: block;
+    padding: 8px;
+    border-radius: 25px;
+    transition: background 0.2s;
+}
+
+aside a:hover {
+    color: white;
+    background: rgb(50, 145, 240);
+    border-radius: 25px; /* 角丸をさらに大きく */
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* アップロード完了コンテンツ */
+.upload-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeInScale 0.6s ease forwards;
+    max-width: 400px;
+    width: 90%;
+}
+
+.upload-content h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.upload-content p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.upload-content a {
+    display: inline-block;
+    background: rgb(50, 145, 240);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.upload-content a:hover {
+    background: rgb(30, 125, 220);
+    transform: scale(1.05);
+}
+
+/* アニメーション */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ハンバーガーメニュー対応 */
+.hamburger {
+    display: none;
+    font-size: 50px;
+    background: none;
+    border: none;
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    aside#side-menu {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background: rgba(245, 245, 245, 0.95);
+        transition: right 0.3s;
+        z-index: 999;
+        padding-top: 100px;
+    }
+
+    aside#side-menu.open {
+        right: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .container {
+        margin-left: 0;
+    }
+}
+
+/* ======= スマホ表示 サイドメニュー h2 余白調整 ======= */
+@media (max-width: 768px) {
+    aside#side-menu h2 {
+        margin-top: 10px;
+    }
+}
