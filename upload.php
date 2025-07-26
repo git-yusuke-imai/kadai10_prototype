@@ -4,7 +4,7 @@ try {
     $pdo = new PDO(
         'mysql:dbname=gs-y-imai_kadai;charset=utf8;host=mysql3108.db.sakura.ne.jp', 
         'gs-y-imai_kadai', 
-        'GS_kadai_02Sat'
+        ''
     );
 } catch (PDOException $e) {
     exit('DB Connection Error: ' . $e->getMessage());
