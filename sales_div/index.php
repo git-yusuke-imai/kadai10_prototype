@@ -299,8 +299,7 @@ $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
     </form>
 </div>
 
-<?php if (!empty($compare_data) && $compare_data['sales_sum'] !== null): ?>
-<!-- 比較年テーブル -->
+<?php if (!empty($compare_data) && $compare_data['sales'] !== null): ?>
 <!-- 比較年テーブル -->
 <div class="dashboard-content">
     <h2>比較年：FY<?= htmlspecialchars($compare_fy) ?></h2>
@@ -308,6 +307,7 @@ $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
         <thead>
             <tr>
                 <th>媒体</th>
+                <th>FY</th>
                 <th>売上合計</th>
                 <th>販売点数</th>
                 <th>売上単価</th>
@@ -320,6 +320,7 @@ $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <tr>
                 <td>TOTAL</td>
+                <td><?= htmlspecialchars($row['fy']) ?></td>
                 <td><?= number_format($compare_data['sales']) ?>円</td>
                 <td><?= $compare_data['number_sold'] ?>点</td>
                 <td><?= number_format($compare_data['unit_price']) ?>円</td>
@@ -339,6 +340,8 @@ $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
     <table>
         <thead>
             <tr>
+            <th>媒体</th>
+            <th>FY</th>
                 <th>売上</th>
                 <th>販売点数</th>
                 <th>売上単価</th>
@@ -350,6 +353,8 @@ $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
         </thead>
         <tbody>
             <tr>
+            <td>TOTAL</td>
+            <td><?= htmlspecialchars($compare_fy) ?></td>
                 <?php
                 function coloredRate($current, $compare) {
                     if ($compare > 0) {
@@ -361,19 +366,17 @@ $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
                     }
                 }
                 ?>
-                <?= coloredRate($sales_total, $compare_data['sales']) ?>
-                <?= coloredRate($number_sold_total, $compare_data['number_sold']) ?>
-                <?= coloredRate($unit_price_total, $compare_data['unit_price']) ?>
-                <?= coloredRate($totalarticles_total, $compare_data['total_articles']) ?>
-                <?= coloredRate($newlisting_total, $compare_data['new_listing']) ?>
-                <?= coloredRate($total_conversion_rate_total, $compare_data['sell_rate_total']) ?>
-                <?= coloredRate($new_conversion_rate_total, $compare_data['sell_rate_new']) ?>
+                <?= coloredRate($sales_sum, $compare_data['sales']) ?>
+<?= coloredRate($number_sold_sum, $compare_data['number_sold']) ?>
+<?= coloredRate($unit_price_total, $compare_data['unit_price']) ?>
+<?= coloredRate($total_articles_sum, $compare_data['total_articles']) ?>
+<?= coloredRate($new_listing_sum, $compare_data['new_listing']) ?>
+<?= coloredRate($sell_rate_total, $compare_data['sell_rate_total']) ?>
+<?= coloredRate($sell_rate_new, $compare_data['sell_rate_new']) ?>
             </tr>
         </tbody>
     </table>
 </div>
-<?php endif; ?>
-
-    
+<?php endif; ?>    
 </body>
 </html>
