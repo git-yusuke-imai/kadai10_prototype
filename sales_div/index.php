@@ -320,7 +320,7 @@ $chart_data = $stmt_chart->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <tr>
                 <td>TOTAL</td>
-                <td><?= htmlspecialchars($row['fy']) ?></td>
+                <td><?= htmlspecialchars($compare_fy) ?></td>
                 <td><?= number_format($compare_data['sales']) ?>円</td>
                 <td><?= $compare_data['number_sold'] ?>点</td>
                 <td><?= number_format($compare_data['unit_price']) ?>円</td>
